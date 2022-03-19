@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Category } from '../Category'
+import { ContentLoader } from './ContentLoader.js'
 //
 import { List, Item } from './styles.js'
 
@@ -38,7 +39,7 @@ export const ListOfCategories = () => {
     <List fixed={fixed}>
       {
         loading
-          ? <Item key='loading'><Category /></Item>
+          ? <ContentLoader />
           : categories.map(category =>
             <Item key={category.id}>
               <Category {...category} />
