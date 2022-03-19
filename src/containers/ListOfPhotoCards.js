@@ -1,8 +1,20 @@
 import React from 'react'
-import { PhotoCard } from '../PhotoCard'
+import { gql, useQuery } from '@apollo/client'
 //
-import { withPhotos } from '../../hoc/withPhotos.js'
-import { useQuery } from '@apollo/client'
+import { PhotoCard } from '../components/PhotoCard'
+
+const withPhotos = gql`
+  query getPhotos($categoryId: ID) {
+    photos(categoryId: $categoryId) {
+      id
+      categoryId
+      src
+      likes
+      userId
+      liked
+    }
+  }
+`
 
 export const ListOfPhotoCards = () => {
   const { loading, error, data } = useQuery(withPhotos)
