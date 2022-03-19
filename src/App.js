@@ -5,11 +5,13 @@ import { ListOfCategories } from './components/ListOfCategories'
 import { ListOfPhotoCards } from './components/ListOfPhotoCards'
 import { Logo } from './components/Logo'
 
-export const App = () => (
-  <>
-    <GlobalStyle />
-    <Logo />
-    <ListOfCategories />
-    <ListOfPhotoCards />
-  </>
-)
+export const App = () => {
+  return (
+    <>
+      <GlobalStyle />
+      <Logo />
+      <ListOfCategories />
+      <ListOfPhotoCards categoryId={2} />
+    </>
+  )
+}
