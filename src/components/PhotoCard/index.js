@@ -25,8 +25,8 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
             </ImgWrapper>
           </a>
           <Button onClick={() => setLiked(!liked)}>
-            <Icon size='32px' />
-            {likes} likes!
+            <Icon size='24px' />
+            {likes}
           </Button>
         </> //eslint-disable-line
       }
