@@ -1,9 +1,10 @@
 import React from 'react'
 import { PhotoCard } from '../components/PhotoCard'
+import { ContentLoader } from '../components/PhotoCard/ContentLoader.js'
 //
 import { gql, useQuery } from '@apollo/client'
 
-const query = gql`
+const GET_SINGLE_PHOTO = gql`
   query getSinglePhoto($id: ID!) {
     photo(id: $id) {
       id
@@ -17,15 +18,11 @@ const query = gql`
 `
 
 export const PhotoCardWithQuery = ({ id }) => {
-  const { loading, error, data } = useQuery(query, {
+  const { loading, error, data } = useQuery(GET_SINGLE_PHOTO, {
     variables: { id: id }
   })
-  if (error) {
-    return <h2>Internal Server Error</h2>
-  }
-  if (loading) {
-    return <h2>Loading...</h2>
-  }
+  if (loading) return <ContentLoader />
+  if (error) return <h2>Internal Server Error</h2>
 
   return (
     <PhotoCard {...data.photo} />
