@@ -2,9 +2,10 @@ import React from 'react'
 import { GlobalStyle } from './styles/global'
 import { Logo } from './components/Logo'
 //
-import { ListOfCategories } from './components/ListOfCategories'
-import { ListOfPhotoCards } from './containers/ListOfPhotoCards'
 import { PhotoCardWithQuery } from './containers/PhotoCardWithQuery'
+import { Home } from './pages/Home'
+//
+import { Router } from '@reach/router'
 
 export const App = () => {
   const urlParams = new window.URLSearchParams(window.location.search)
@@ -17,10 +18,10 @@ export const App = () => {
       {
         detailId
           ? <PhotoCardWithQuery id={detailId} />
-          : <>
-            <ListOfCategories />
-            <ListOfPhotoCards />
-          </> //eslint-disable-line
+          : <Router>
+            <Home path='/' />
+            <Home path='/pet/:id' />
+          </Router> //eslint-disable-line
       }
     </>
   )
