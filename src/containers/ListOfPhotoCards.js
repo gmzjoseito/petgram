@@ -17,8 +17,8 @@ const GET_PHOTOS = gql`
   }
 `
 
-export const ListOfPhotoCards = () => {
-  const { loading, error, data } = useQuery(GET_PHOTOS)
+export const ListOfPhotoCards = ({ categoryId }) => {
+  const { loading, error, data } = useQuery(GET_PHOTOS, { variables: { categoryId: categoryId } })
   //
   if (loading) return <ContentLoader />
   if (error) return <h2>Internal Server Error</h2>
