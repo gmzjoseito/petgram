@@ -1,4 +1,5 @@
 import React from 'react'
+import Context from './Context'
 import { GlobalStyle } from './styles/global'
 import { Logo } from './components/Logo'
 //
@@ -11,10 +12,6 @@ import { Navbar } from './components/Navbar'
 //
 import { Router } from '@reach/router'
 
-const UserLogged = ({ children }) => {
-  return children({ isAuth: false })
-}
-
 export const App = () => {
   return (
     <>
@@ -25,7 +22,7 @@ export const App = () => {
         <Home path='/pet/:id' />
         <Detail path='/detail/:detailId' />
       </Router>
-      <UserLogged>
+      <Context.Consumer>
         {
           ({ isAuth }) =>
             isAuth
@@ -38,7 +35,7 @@ export const App = () => {
                 <NotRegisteredUser path='/user' />
               </Router> //eslint-disable-line
         }
-      </UserLogged>
+      </Context.Consumer>
       <Navbar />
     </>
   )
